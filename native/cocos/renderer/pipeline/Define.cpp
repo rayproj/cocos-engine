@@ -73,6 +73,12 @@ const gfx::UniformBlock UBOGlobal::LAYOUT = {
         {"cc_probeInfo", gfx::Type::FLOAT4, 1},
 
         {"cc_debug_view_mode", gfx::Type::FLOAT4, 1},
+
+        // 自定义
+        {"cc_custom1", gfx::Type::FLOAT4, 1},
+        {"cc_custom2", gfx::Type::FLOAT4, 1},
+        {"cc_custom3", gfx::Type::FLOAT4, 1},
+        {"cc_custom4", gfx::Type::FLOAT4, 1},
     },
     1,
 };

@@ -5409,6 +5409,46 @@ static bool js_cc_Root_createRenderWindowFromSystemWindow(se::State& s)
 }
 SE_BIND_FUNC(js_cc_Root_createRenderWindowFromSystemWindow) 
 
+static bool js_cc_Root_setShaderGlobal(se::State& s)
+{
+    CC_UNUSED bool ok = true;
+    const auto& args = s.args();
+    size_t argc = args.size();
+    cc::Root *arg1 = (cc::Root *) NULL ;
+    int8_t arg2 ;
+    float arg3 ;
+    float arg4 ;
+    float arg5 ;
+    float arg6 ;
+    
+    if(argc != 5) {
+        SE_REPORT_ERROR("wrong number of arguments: %d, was expecting %d", (int)argc, 5);
+        return false;
+    }
+    arg1 = SE_THIS_OBJECT<cc::Root>(s);
+    if (nullptr == arg1) return true;
+    
+    ok &= sevalue_to_native(args[0], &arg2, s.thisObject());
+    SE_PRECONDITION2(ok, false, "Error processing arguments"); 
+    
+    ok &= sevalue_to_native(args[1], &arg3, s.thisObject());
+    SE_PRECONDITION2(ok, false, "Error processing arguments"); 
+    
+    ok &= sevalue_to_native(args[2], &arg4, s.thisObject());
+    SE_PRECONDITION2(ok, false, "Error processing arguments"); 
+    
+    ok &= sevalue_to_native(args[3], &arg5, s.thisObject());
+    SE_PRECONDITION2(ok, false, "Error processing arguments"); 
+    
+    ok &= sevalue_to_native(args[4], &arg6, s.thisObject());
+    SE_PRECONDITION2(ok, false, "Error processing arguments"); 
+    (arg1)->setShaderGlobal(arg2,arg3,arg4,arg5,arg6);
+    
+    
+    return true;
+}
+SE_BIND_FUNC(js_cc_Root_setShaderGlobal) 
+
 static bool js_cc_Root_device_set(se::State& s)
 {
     CC_UNUSED bool ok = true;
@@ -5880,6 +5920,7 @@ bool js_register_cc_Root(se::Object* obj) {
     cls->defineFunction("createCamera", _SE(js_cc_Root_createCamera)); 
     cls->defineFunction("getBatcher2D", _SE(js_cc_Root_getBatcher2D)); 
     cls->defineFunction("createRenderWindowFromSystemWindow", _SE(js_cc_Root_createRenderWindowFromSystemWindow)); 
+    cls->defineFunction("setShaderGlobal", _SE(js_cc_Root_setShaderGlobal)); 
     
     
     cls->defineStaticFunction("getInstance", _SE(js_cc_Root_getInstance_static)); 

@@ -62,6 +62,10 @@ public:
     void updateShadowUBOLight(gfx::DescriptorSet *globalDS, const scene::Light *light, uint32_t level = 0U);
     void updateShadowUBORange(uint32_t offset, const Mat4 *data);
 
+    inline ccstd::array<float, UBOGlobal::COUNT> *getGlobalUBO() {
+        return &_globalUBO;
+    }
+
     uint32_t getCurrentCameraUBOOffset() const;
     void incCameraUBOOffset();
 

@@ -449,7 +449,14 @@ struct CC_DLL UBOGlobal {
 
     static constexpr uint32_t DEBUG_VIEW_MODE_OFFSET = UBOGlobal::PROBE_INFO_OFFSET + 4;
 
-    static constexpr uint32_t COUNT = UBOGlobal::DEBUG_VIEW_MODE_OFFSET + 4;
+    // 自定义
+    static constexpr uint32_t CUSTOM_1 = UBOGlobal::PROBE_INFO_OFFSET + 4;
+    static constexpr uint32_t CUSTOM_2 = UBOGlobal::CUSTOM_1 + 4;
+    static constexpr uint32_t CUSTOM_3 = UBOGlobal::CUSTOM_2 + 4;
+    static constexpr uint32_t CUSTOM_4 = UBOGlobal::CUSTOM_3 + 4;
+
+
+    static constexpr uint32_t COUNT = UBOGlobal::CUSTOM_4 + 4;
 
     static constexpr uint32_t SIZE = UBOGlobal::COUNT * 4;
     static constexpr uint32_t BINDING = static_cast<uint32_t>(PipelineGlobalBindings::UBO_GLOBAL);

@@ -24,12 +24,13 @@
 #pragma once
 
 #include <cstdint>
-//#include "3d/skeletal-animation/DataPoolManager.h"
+// #include "3d/skeletal-animation/DataPoolManager.h"
 #include "bindings/event/EventDispatcher.h"
 #include "core/event/Event.h"
 #include "core/memop/Pool.h"
-#include "renderer/pipeline/RenderPipeline.h"
 #include "renderer/pipeline/DebugView.h"
+#include "renderer/pipeline/RenderPipeline.h"
+#include "renderer/pipeline/PipelineUBO.h"
 #include "scene/DrawBatch2D.h"
 #include "scene/Light.h"
 #include "scene/Model.h"
@@ -294,6 +295,16 @@ public:
     }
 
     void frameSync();
+
+    inline void setShaderGlobal(int8_t index, float x, float y, float z, float w) {
+        auto globalUBO = _pipeline->getPipelineUBO()->getGlobalUBO();
+        auto &bufferView = *globalUBO;
+        uint8_t offset = 20 + index * 4;
+        bufferView[offset] = x;
+        bufferView[offset + 1] = y;
+        bufferView[offset + 2] = z;
+        bufferView[offset + 3] = w;
+    }
 
 private:
     void frameMoveBegin();
