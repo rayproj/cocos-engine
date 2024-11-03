@@ -184,7 +184,13 @@ export class UBOGlobal {
 
     public static readonly DEBUG_VIEW_MODE_OFFSET = UBOGlobal.PROBE_INFO_OFFSET + 4;
 
-    public static readonly COUNT = UBOGlobal.DEBUG_VIEW_MODE_OFFSET + 4;
+    // 自定义
+    public static readonly CUSTOM_1 = UBOGlobal.DEBUG_VIEW_MODE_OFFSET + 4;
+    public static readonly CUSTOM_2 = UBOGlobal.CUSTOM_1 + 4;
+    public static readonly CUSTOM_3 = UBOGlobal.CUSTOM_2 + 4;
+    public static readonly CUSTOM_4 = UBOGlobal.CUSTOM_3 + 4;
+
+    public static readonly COUNT = UBOGlobal.CUSTOM_4 + 4;
     public static readonly SIZE = UBOGlobal.COUNT * 4;
 
     public static readonly NAME = 'CCGlobal';
@@ -197,6 +203,11 @@ export class UBOGlobal {
         new Uniform('cc_probeInfo', Type.FLOAT4, 1),
 
         new Uniform('cc_debug_view_mode', Type.FLOAT4, 1),
+
+        new Uniform('cc_custom1', Type.FLOAT4, 1),
+        new Uniform('cc_custom2', Type.FLOAT4, 1),
+        new Uniform('cc_custom3', Type.FLOAT4, 1),
+        new Uniform('cc_custom4', Type.FLOAT4, 1)
     ], 1);
 }
 globalDescriptorSetLayout.layouts[UBOGlobal.NAME] = UBOGlobal.LAYOUT;
