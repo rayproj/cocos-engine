@@ -242,3 +242,5 @@ rootProto.removeBatch = function (batch) {
 rootProto.removeBatches = function () {
     console.error('The Draw Batch class is implemented differently in the native platform and does not support this interface.');
 }
+
+rootProto.setShaderGlobal = function () { }
